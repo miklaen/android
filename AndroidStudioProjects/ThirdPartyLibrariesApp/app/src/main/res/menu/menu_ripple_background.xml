@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".RippleBackgroundActivity">
+    <item
+        android:id="@+id/action_explode"
+        android:orderInCategory="100"
+        android:title="@string/title_activity_explode_image"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_standup"
+        android:orderInCategory="200"
+        android:title="@string/title_activity_stand_up"
+        app:showAsAction="always" />
+</menu>

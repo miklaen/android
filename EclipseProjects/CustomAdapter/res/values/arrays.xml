@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="activity_names">
+    	<item>Larnach Castle</item>
+        <item>Moana Pool</item>
+        <item>Monarch Cruise</item>
+        <item>Octagon</item>
+        <item>Olveston</item>
+        <item>Peninsula</item>
+        <item>Salt Water Pool</item>
+        <item>Speights Brewery</item>
+        <item>St. Kilda Beach</item>
+        <item>Taeri Gorge Railway</item>
+    </string-array>
+    
+     <string-array name="image_file_names">
+    	<item>larnach_castle</item>
+        <item>moana_pool</item>
+        <item>monarch</item>
+        <item>octagon</item>
+        <item>olveston</item>
+        <item>peninsula</item>
+        <item>salt_water_pool</item>
+        <item>speights_brewery</item>
+        <item>st_kilda_beach</item>
+        <item>taeri_gorge_railway</item>
+    </string-array>
+</resources>

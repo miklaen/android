@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Language Quiz</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="image_names">
+        <item>das_auto</item>
+        <item>das_haus</item>
+        <item>das_schaf</item>
+        <item>der_apfel</item>
+        <item>der_baum</item>
+        <item>der_stuhl</item>
+        <item>die_ente</item>
+        <item>die_hexe</item>
+        <item>die_kuh</item>
+        <item>die_milch</item>
+        <item>die_strasse</item>
+    </string-array>
+    <string-array name="nouns">
+        <item>___ Auto</item>
+        <item>___ Haus</item>
+        <item>___ Schaf</item>
+        <item>___ Apfel</item>
+        <item>___ Baum</item>
+        <item>___ Stuhl</item>
+        <item>___ Ente</item>
+        <item>___ Hexe</item>
+        <item>___ Kuh</item>
+        <item>___ Milch</item>
+        <item>___ Straße</item>
+    </string-array>
+
+    <string name="die">Die</string>
+    <string name="das">Das</string>
+    <string name="der">Der</string>
+    <string name="submit">Select</string>
+    <string name="begin">Begin</string>
+    <string name="title">German Language Quiz</string>
+    <string name="title_activity_results">Your Score</string>
+    <string name="your_score">Your score:</string>
+    <string name="play_again">Play Again?</string>
+
+</resources>

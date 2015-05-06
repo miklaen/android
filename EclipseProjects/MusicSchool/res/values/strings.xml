@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Music School</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="enroll_label">Enroll for Music Lessons</string>
+    <string name="accordion">Accordion</string>
+    <string name="bassoon">Bassoon</string>
+    <string name="cello">Cello</string>
+    <string name="submit">Enroll me!</string>
+    <string name="choose_instrument">Choose your instrument:</string>
+    <string name="when_start">When do you want to start?</string>
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+</resources>

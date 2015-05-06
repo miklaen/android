@@ -1,0 +1,245 @@
+package bit.annanma1.webservices;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+public class WebServicesMainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_web_services_main);
+
+		// Retrieve data
+		AsyncAPICall getArtists = new AsyncAPICall();
+		getArtists.execute();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.web_services_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		if (id == R.id.action_search) {
+			Intent intent = new Intent(this, WebServicesSearchActivity.class);
+			startActivity(intent);
+			finish();
+		}
+		if (id == R.id.action_image) {
+			Intent intent = new Intent(this, WebServicesArtistImageActivity.class);
+			startActivity(intent);
+			finish();
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	public class MultiColumn {
+		String name;
+		String listeners;
+
+		public MultiColumn(String name, String listeners) {
+			this.name = name;
+			this.listeners = listeners;
+		}
+
+		@Override
+		public String toString() {
+			return name + " " + listeners;
+		}
+
+	}
+
+	// Custom adapter to return layout with an ImageView and 2 TextViews
+	public class MultiColumnArrayAdapter extends ArrayAdapter<MultiColumn> {
+
+		public MultiColumnArrayAdapter(Context context, int resource,
+				ArrayList<MultiColumn> objects) {
+			super(context, resource, objects);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup container) {
+
+			// Get a LayoutInflater
+			LayoutInflater inflater = getLayoutInflater();
+
+			// Inflate custom_list_view and store the returned View in a
+			// variable
+			View customView = inflater.inflate(R.layout.two_column_list,
+					container, false);
+
+			// Get references to the controls in two_column_list.
+			TextView nameTxtView = (TextView) customView
+					.findViewById(R.id.textViewName);
+			TextView listenersTxtView = (TextView) customView
+					.findViewById(R.id.textViewListeners);
+
+			// Get the current ToDo instance. Use the Adapter base class's
+			// getItem command
+			MultiColumn currentItem = getItem(position);
+
+			// Use the data fields of the current MultiColumn instance to
+			// initialise the View controls correctly
+			nameTxtView.setText(currentItem.name);
+			listenersTxtView.setText(currentItem.listeners);
+
+			// Return your customview
+			return customView;
+		}
+	}
+
+	// Populate the ListView with data
+	public ArrayList<MultiColumn> populateArtistsArray(String JSONString) {
+		// Initialize ArrayList to return data
+		ArrayList<MultiColumn> artistDisplayArray = new ArrayList<MultiColumn>();
+
+		// Create a JSON Object from the string
+		JSONObject artistData = null;
+		try {
+			artistData = new JSONObject(JSONString);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// Create a JSON Array from the JSON Object artists, within the root
+		// JSON
+		JSONObject artistsObject = null;
+		JSONArray artistArray = null;
+		if (artistData != null) {
+			try {
+				// Inside the "artists" object...
+				artistsObject = artistData.getJSONObject("artists");
+				// ...we should find the "artist" array
+				artistArray = artistsObject.getJSONArray("artist");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (artistArray != null) {
+			for (int i = 0; i < artistArray.length(); i++) {
+				JSONObject currentArtist = null;
+
+				try {
+					currentArtist = artistArray.getJSONObject(i);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				String artistName = null;
+				String listeners = null;
+				try {
+					// image = current
+					artistName = currentArtist.getString("name");
+					listeners = currentArtist.getString("listeners");
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				MultiColumn current = new MultiColumn(artistName, listeners);
+				artistDisplayArray.add(current);
+			}
+		}
+		
+		return artistDisplayArray;
+	}
+
+	// AsyncTask to retrieve the top 20 artists from last.fm
+	class AsyncAPICall extends AsyncTask<Void, Void, String> {
+
+		@Override
+		protected String doInBackground(Void... params) {
+			String JSONString = null; 
+			
+			// Hard coded api call
+			String urlString = "http://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&api_key=58384a2141a4b9737eacb9d0989b8a8c&limit=20&format=json";
+
+			// Convert string to URLObject
+			try {
+				URL URLObject = new URL(urlString);
+
+				// Create HttpURLConnection object
+				HttpURLConnection connection = (HttpURLConnection) URLObject
+						.openConnection();
+
+				// Send the URL
+				connection.connect();
+
+				// If it doesn't return 200, we have no data
+				int responseCode = connection.getResponseCode();
+
+				// Get an input stream from the HttpURLConnection and set up a
+				// BufferedReader
+				InputStream is = connection.getInputStream();
+				InputStreamReader isr = new InputStreamReader(is);
+				BufferedReader br = new BufferedReader(isr);
+
+				// Read the input
+				String responseString;
+				StringBuilder sb = new StringBuilder();
+				while ((responseString = br.readLine()) != null) {
+					sb = sb.append(responseString);
+				}
+				
+				// Get the string from the StringBuilder
+				JSONString = sb.toString();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Return the string
+			return JSONString;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// Create array of retrieved data, and an array adapter to populate
+			// ListView
+			ArrayList<MultiColumn> artistDisplayArray = populateArtistsArray(result);
+			ArrayAdapter<MultiColumn> artistAdapter = new MultiColumnArrayAdapter(
+					WebServicesMainActivity.this, R.layout.two_column_list, artistDisplayArray);
+
+			// Get reference to the ListView and set its adapter
+			ListView artistList = (ListView) findViewById(R.id.listViewTopArtists);
+			artistList.setAdapter(artistAdapter);
+		}
+	}
+}

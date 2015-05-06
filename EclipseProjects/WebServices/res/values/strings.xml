@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WebServices</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="top_artists">Top Artists</string>
+    <string name="artists">Artist</string>
+    <string name="listeners">Listeners</string>
+    <string name="title_activity_web_services_search">Search Artists</string>
+    <string name="action_artists">Top 20</string>
+    <string name="action_search">Similar Artists</string>
+    <string name="action_image">Top Artist</string>
+    <string name="artist_search">Search for similar artists</string>
+    <string name="enter_artist">Enter an artist</string>
+    <string name="search">Search</string>
+    <string name="title_activity_web_services_similar_artists">Similar Artists</string>
+    <string name="title_activity_web_services_artist_image">Top Artist Image</string>
+    <string name="show_image">Show Top Artist Image</string>
+
+</resources>

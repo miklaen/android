@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="bit.annanma1.thirdpartylibrariesapp.ExplodeImageActivity">
+    <item
+        android:id="@+id/action_ripple"
+        android:orderInCategory="100"
+        android:title="@string/ripple_bg"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_standup"
+        android:orderInCategory="200"
+        android:title="@string/title_activity_stand_up"
+        app:showAsAction="always" />
+</menu>

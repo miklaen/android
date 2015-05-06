@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">Thankyou Trust</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="get_data">Get data</string>
+    <string name="placeholder">Placeholder</string>
+
+</resources>

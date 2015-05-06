@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="bit.annannma1.requestingdata.RequestingDataMainActivity" >
+
+    <TextView
+        android:id="@+id/textViewMainScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_screen"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="254dp"
+        android:layout_weight="0.05"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec magna placerat, rutrum nulla at, tincidunt purus. Praesent ante dui, bibendum vel scelerisque eu, consectetur sit amet eros. Nunc ut hendrerit magna, nec euismod velit. Duis vel sem ac felis fermentum tempor. Nam commodo arcu id rhoncus gravida. Ut convallis viverra turpis, eget tincidunt est lacinia ut. Praesent eleifend eros mauris, a ornare tellus hendrerit non. Aliquam tempor non nunc quis sodales. Vestibulum convallis sapien nec dui lobortis imperdiet. Quisque varius tincidunt imperdiet. Nam tempus congue erat, sed ultricies libero iaculis nec. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed consequat lectus vel gravida laoreet. Aliquam rhoncus malesuada venenatis. Curabitur tempus molestie elementum. Ut sed risus feugiat, pulvinar eros a, auctor quam. Vestibulum volutpat porta ipsum, blandit dictum risus pharetra vel. Morbi placerat sed justo quis commodo. Integer pellentesque odio non congue bibendum. Nam vitae sapien blandit, malesuada sapien eu, mollis mauris. Praesent magna libero, auctor in aliquam eu, fermentum eget ligula. Vivamus fringilla nisl eget aliquet ultricies. Integer mattis convallis convallis. Proin maximus condimentum ligula euismod condimentum. " />
+
+    <Button
+        android:id="@+id/buttonTextColour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_colour" />
+
+</LinearLayout>
