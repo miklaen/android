@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Google Maps Teleport Game</string>
     <string name="title_activity_maps">Map</string>
+    <string name="teleport">Teleport</string>
 </resources>
