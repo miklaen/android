@@ -3,5 +3,14 @@
 
     <string name="search">Tap here to Search</string>
     <string name="title_activity_maps">Map</string>
+    <string name="place_name">Location Name</string>
+    <string name="name">Name</string>
+    <string name="place_address">Address</string>
+    <string name="place_phone">Phone Number</string>
+    <string name="optional_place_phone">(Optional) Phone Number</string>
+    <string name="place_website">Website</string>
+    <string name="optional_website">(Optional) Website Address</string>
+    <string name="optional_place_type">Place Type</string>
+    <string name="error_field_required">This field is required</string>
 
 </resources>
