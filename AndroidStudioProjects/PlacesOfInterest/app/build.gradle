@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'MyReleaseKey'
+            keyPassword 'Gofuckagoat69r'
+            storeFile file('C:/Users/annanma1/AndroidKeystore/release.keystore.jks')
+            storePassword 'Gofuckagoat69r'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "bit.annanma1.placesofinterest"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
@@ -20,18 +28,12 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
+    productFlavors {
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.google.android.gms:play-services:7.3.0'
-
-    // Unit testing dependencies
-    testCompile 'junit:junit:4.12'
-    // Set this dependency if you want to use Mockito
-    testCompile 'org.mockito:mockito-core:1.10.19'
-    // Set this dependency if you want to use Hamcrest matching
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
-
 }
